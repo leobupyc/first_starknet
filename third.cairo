@@ -1,7 +1,7 @@
 #[starknet::interface]
 trait ISimpleStorage<TContractState> {
-    fn setvar(ref self: TContractState, x: u128);
-    fn getvar(self: @TContractState) -> u128;
+    fn setvarx(ref self: TContractState, x: u128);
+    fn getvarx(self: @TContractState) -> u128;
 }
 
 #[starknet::contract]
@@ -16,10 +16,10 @@ mod SimpleStorage {
 
     #[external(v0)]
     impl SimpleStorage of super::ISimpleStorage<ContractState> {
-        fn setvar(ref self: ContractState, x: u128) {
+        fn setvarx(ref self: ContractState, x: u128) {
             self.stored_data.write(x);
         }
-        fn getvar(self: @ContractState) -> u128 {
+        fn getvarx(self: @ContractState) -> u128 {
             self.stored_data.read()
         }
     }
